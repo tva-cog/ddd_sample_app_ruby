@@ -30,8 +30,8 @@ group :development do
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
   
-  gem 'guard'
-  gem 'guard-rspec'
+  gem 'guard', '>= 1.8.3'
+  gem 'guard-rspec', '>= 3.1.0'
   gem 'terminal-notifier-guard'
 end
 
