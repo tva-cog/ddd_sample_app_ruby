@@ -18,7 +18,7 @@ group :assets do
   gem 'less-rails'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 3.1.3'
 gem 'rspec-rails'
 
 gem 'mongo', '1.7.0'
