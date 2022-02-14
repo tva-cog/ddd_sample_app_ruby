@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 
-gem 'rails', '5.2.4.6'
+gem 'rails', '5.2.6.2'
 
 
 # Gems used only for assets and not required
@@ -14,11 +14,11 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 2.7.2'
-  gem 'twitter-bootstrap-rails', '>= 3.2.0'
+  gem 'twitter-bootstrap-rails', '>= 2.2.7'
   gem 'less-rails', '>= 2.3.3'
 end
 
-gem 'jquery-rails', '>= 4.4.0'
+gem 'jquery-rails', '>= 4.0.1'
 gem 'rspec-rails', '>= 2.13.2'
 
 gem 'mongo', '2.0.0'
