@@ -1,14 +1,14 @@
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 
-gem 'rails', '5.2.4.6'
+gem 'rails', '5.0.0'
 
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails', '~> 5.0.5'
-  gem 'coffee-rails', '~> 4.2.2'
+  gem 'coffee-rails', '~> 4.1.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -18,7 +18,7 @@ group :assets do
   gem 'less-rails', '>= 2.3.3'
 end
 
-gem 'jquery-rails', '>= 4.4.0'
+gem 'jquery-rails', '>= 4.0.1'
 gem 'rspec-rails', '>= 2.13.2'
 
 gem 'mongo', '2.0.0'
