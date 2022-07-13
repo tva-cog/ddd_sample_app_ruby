@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 source 'http://gems.github.com'
 
-gem 'rails', '5.2.4.6'
+gem 'rails', '5.2.8.1'
 
 
 # Gems used only for assets and not required
