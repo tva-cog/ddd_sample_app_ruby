@@ -1,42 +1,35 @@
 class Cargo
-  attr_accessor :tracking_id
-  attr_accessor :route_specification
-  attr_accessor :itinerary
-  attr_accessor :delivery
+  attr_accessor :tracking_id, :route_specification, :itinerary, :delivery
 
   class InitializationError < RuntimeError; end
 
-  def initialize (tracking_id, route_specification)
+  def initialize(tracking_id, route_specification)
     raise InitializationError unless tracking_id && route_specification
 
     @tracking_id = tracking_id
     @route_specification = route_specification
-    @delivery = Delivery.new(@route_specification, @itinerary, nil)
+    @delivery = Delivery.update_on_routing(@route_specification, @itinerary)
   end
 
-  # cf. https://github.com/SzymonPobiega/DDDSample.Net/blob/master/DDDSample-Vanilla/Domain/Cargo/Cargo.cs#L55
-  def specify_new_route (route_specification)
-    # TODO: add exception checking for invalid (null) values
+  def specify_new_route(route_specification)
+    raise ArgumentError, "Route specification cannot be nil" unless route_specification
+
     @route_specification = route_specification
-    # TODO: Change to @delivery = Delivery.update_on_routing(@route_specification, @itinerary)
-    @delivery = Delivery.new(@route_specification, @itinerary, @delivery.last_handling_event)
+    @delivery = Delivery.update_on_routing(@route_specification, @itinerary)
   end
 
-  # cf. https://github.com/SzymonPobiega/DDDSample.Net/blob/master/DDDSample-Vanilla/Domain/Cargo/Cargo.cs#L69
-  def assign_to_route (itinerary)
-    # TODO: add exception checking for invalid (null) values
+  def assign_to_route(itinerary)
+    raise ArgumentError, "Itinerary cannot be nil" unless itinerary
+
     @itinerary = itinerary
-    # TODO: Change to @delivery = Delivery.update_on_routing(@route_specification, @itinerary)
-    # @delivery = Delivery.new(@route_specification, @itinerary, @delivery.last_handling_event)
+    @delivery = Delivery.update_on_routing(@route_specification, @itinerary)
   end
 
-  # cf. https://github.com/SzymonPobiega/DDDSample.Net/blob/master/DDDSample-Vanilla/Domain/Cargo/Cargo.cs#L83
-  def derive_delivery_progress (last_handling_event)
-    # TODO: Change to @delivery = Delivery.derived_from(@route_specification, @itinerary)?
-    @delivery = Delivery.new(@route_specification, @itinerary, last_handling_event)
+  def derive_delivery_progress(last_handling_event)
+    @delivery = Delivery.derived_from(@route_specification, @itinerary, last_handling_event)
   end
 
   def ==(other)
-    self.tracking_id == other.tracking_id
+    tracking_id == other.tracking_id
   end
 end
